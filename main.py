@@ -37,7 +37,7 @@ while True:
     # Do logical updates here.
     tank.update()
 
-    screen.fill("purple")  # Fill the display with a solid color
+    screen.fill("white")
 
     # Render the graphics here.
     tank.draw(screen)
