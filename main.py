@@ -6,6 +6,16 @@ screen = pygame.display.set_mode((1280,720))
 
 clock = pygame.time.Clock()
 
+def draw_walls(screen):
+    color = (0, 0, 0)
+    thickness = 5
+
+    # Draw lines around the screen edges
+    pygame.draw.line(screen, color, (0, 0), (1280, 0), thickness)
+    pygame.draw.line(screen, color, (0, 0), (0, 720), thickness)
+    pygame.draw.line(screen, color, (0, 720), (1280, 720), thickness)
+    pygame.draw.line(screen, color, (1280, 0), (1280, 720), thickness)
+
 class Tank:
     def __init__(self, x, y, size):
         self.rect = pygame.Rect(x, y, size, size)
@@ -41,6 +51,7 @@ while True:
 
     # Render the graphics here.
     tank.draw(screen)
+    draw_walls(screen)
     
     pygame.display.flip()  # Refresh on-screen display
     clock.tick(60)         # wait until next frame (at 60 FPS)
