@@ -6,15 +6,17 @@ screen = pygame.display.set_mode((1280,720))
 
 clock = pygame.time.Clock()
 
+walls = [
+    pygame.Rect(0, 0, 1280, 5),
+    pygame.Rect(0, 0, 5, 720),
+    pygame.Rect(1275, 0, 5, 720),
+    pygame.Rect(640, 360, 5, 360)
+]
+
 def draw_walls(screen):
     color = (0, 0, 0)
-    thickness = 5
-
-    # Draw lines around the screen edges
-    pygame.draw.line(screen, color, (0, 0), (1280, 0), thickness)
-    pygame.draw.line(screen, color, (0, 0), (0, 720), thickness)
-    pygame.draw.line(screen, color, (0, 720), (1280, 720), thickness)
-    pygame.draw.line(screen, color, (1280, 0), (1280, 720), thickness)
+    for wall in walls:
+        pygame.draw.rect(screen, color, wall)
 
 class Tank:
     def __init__(self, x, y, size):
