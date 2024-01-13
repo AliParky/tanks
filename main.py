@@ -27,6 +27,9 @@ class Tank:
         pygame.draw.rect(screen, (255, 0, 0), self.rect)
 
     def update(self):
+        original_x = self.rect.x
+        original_y = self.rect.y
+
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT]:
             self.rect.x -= self.speed
@@ -36,6 +39,11 @@ class Tank:
             self.rect.y -= self.speed
         if keys[pygame.K_DOWN]:
             self.rect.y += self.speed
+
+        for wall in walls:
+            if self.rect.colliderect(wall):
+                self.rect.x = original_x
+                self.rect.y = original_y
 
 tank = Tank(50, 50, 50)
 
