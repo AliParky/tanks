@@ -18,12 +18,18 @@ wall_matrix = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 ]
 
-walls = [
-    pygame.Rect(0, 0, 1280, 5),
-    pygame.Rect(0, 0, 5, 720),
-    pygame.Rect(1275, 0, 5, 720),
-    pygame.Rect(640, 360, 5, 360)
-]
+def create_walls_from_matrix(matrix, width, height):
+    walls = []
+    for y, row in enumerate(matrix):
+        for x, cell in enumerate(row):
+            if cell == 1:
+                wall = pygame.Rect(x * width, y * height, width, height)
+                walls.append(wall)
+    return walls
+
+wall_width = 80
+wall_height = 80
+walls = create_walls_from_matrix(wall_matrix, wall_width, wall_height)
 
 def draw_walls(screen):
     color = (0, 0, 0)
