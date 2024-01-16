@@ -63,7 +63,7 @@ class Tank:
                 self.rect.x = original_x
                 self.rect.y = original_y
 
-tank = Tank(50, 50, 50)
+tank = Tank(100, 100, 50)
 
 while True:
     # Process player inputs.
