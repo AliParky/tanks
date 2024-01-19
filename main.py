@@ -40,6 +40,7 @@ class Tank:
     def __init__(self, x, y, size):
         self.rect = pygame.Rect(x, y, size, size)
         self.speed = 5
+        self.angle = 0
 
     def draw(self, screen):
         pygame.draw.rect(screen, (255, 0, 0), self.rect)
@@ -49,14 +50,13 @@ class Tank:
         original_y = self.rect.y
 
         keys = pygame.key.get_pressed()
+
         if keys[pygame.K_LEFT]:
-            self.rect.x -= self.speed
+            self.angle += 5
         if keys[pygame.K_RIGHT]:
-            self.rect.x += self.speed
-        if keys[pygame.K_UP]:
-            self.rect.y -= self.speed
-        if keys[pygame.K_DOWN]:
-            self.rect.y += self.speed
+            self.angle -= 5
+
+        print(self.angle)
 
         for wall in walls:
             if self.rect.colliderect(wall):
