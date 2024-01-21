@@ -1,5 +1,4 @@
 import pygame
-import math
 
 pygame.init()
 
@@ -57,12 +56,7 @@ class Tank:
         if keys[pygame.K_RIGHT]:
             self.angle -= 5
 
-        if keys[pygame.K_UP]:
-            self.rect.x += math.cos(math.radians(self.angle)) * self.speed
-            self.rect.y += -math.sin(math.radians(self.angle)) * self.speed
-        if keys[pygame.K_DOWN]:
-            self.rect.x += -math.cos(math.radians(self.angle)) * self.speed
-            self.rect.y += math.sin(math.radians(self.angle)) * self.speed
+        print(self.angle)
 
         for wall in walls:
             if self.rect.colliderect(wall):
