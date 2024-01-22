@@ -49,14 +49,16 @@ class Tank:
         original_y = self.rect.y
 
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_LEFT]:
-            self.rect.x -= self.speed
-        if keys[pygame.K_RIGHT]:
-            self.rect.x += self.speed
-        if keys[pygame.K_UP]:
-            self.rect.y -= self.speed
-        if keys[pygame.K_DOWN]:
-            self.rect.y += self.speed
+        movement_keys_pressed = sum([keys[pygame.K_LEFT], keys[pygame.K_RIGHT], keys[pygame.K_UP], keys[pygame.K_DOWN]])
+        if movement_keys_pressed == 1:
+            if keys[pygame.K_LEFT]:
+                self.rect.x -= self.speed
+            if keys[pygame.K_RIGHT]:
+                self.rect.x += self.speed
+            if keys[pygame.K_UP]:
+                self.rect.y -= self.speed
+            if keys[pygame.K_DOWN]:
+                self.rect.y += self.speed
 
         for wall in walls:
             if self.rect.colliderect(wall):
