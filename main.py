@@ -40,9 +40,20 @@ class Tank:
     def __init__(self, x, y, size):
         self.rect = pygame.Rect(x, y, size, size)
         self.speed = 5
+        self.barrel_length = size // 2
+        self.direction = "UP"
 
     def draw(self, screen):
         pygame.draw.rect(screen, (255, 0, 0), self.rect)
+        if self.direction == "UP":
+            barrel_rect = pygame.Rect(self.rect.centerx - 5, self.rect.y - self.barrel_length, 10, self.barrel_length)
+        elif self.direction == "DOWN":
+            barrel_rect = pygame.Rect(self.rect.centerx - 5, self.rect.y + self.rect.height, 10, self.barrel_length)
+        elif self.direction == "LEFT":
+            barrel_rect = pygame.Rect(self.rect.x - self.barrel_length, self.rect.centery - 5, self.barrel_length, 10)
+        elif self.direction == "RIGHT":
+            barrel_rect = pygame.Rect(self.rect.x + self.rect.width, self.rect.centery - 5, self.barrel_length, 10)
+        pygame.draw.rect(screen, (255, 0, 0), barrel_rect)
 
     def update(self):
         original_x = self.rect.x
@@ -53,12 +64,16 @@ class Tank:
         if movement_keys_pressed == 1:
             if keys[pygame.K_LEFT]:
                 self.rect.x -= self.speed
+                self.direction = "LEFT"
             if keys[pygame.K_RIGHT]:
                 self.rect.x += self.speed
+                self.direction = "RIGHT"
             if keys[pygame.K_UP]:
                 self.rect.y -= self.speed
+                self.direction = "UP"
             if keys[pygame.K_DOWN]:
                 self.rect.y += self.speed
+                self.direction = "DOWN"
 
         for wall in walls:
             if self.rect.colliderect(wall):
