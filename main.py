@@ -43,17 +43,20 @@ class Tank:
         self.barrel_length = size // 2
         self.direction = "UP"
 
+    def get_barrel_rect(self):
+        match self.direction:
+            case "UP":
+                return pygame.Rect(self.rect.centerx - 5, self.rect.y - self.barrel_length, 10, self.barrel_length)
+            case "DOWN":
+                return pygame.Rect(self.rect.centerx - 5, self.rect.y + self.rect.height, 10, self.barrel_length)
+            case "LEFT":
+                return pygame.Rect(self.rect.x - self.barrel_length, self.rect.centery - 5, self.barrel_length, 10)
+            case "RIGHT":
+                return pygame.Rect(self.rect.x + self.rect.width, self.rect.centery - 5, self.barrel_length, 10)
+        
     def draw(self, screen):
         pygame.draw.rect(screen, (255, 0, 0), self.rect)
-        if self.direction == "UP":
-            barrel_rect = pygame.Rect(self.rect.centerx - 5, self.rect.y - self.barrel_length, 10, self.barrel_length)
-        elif self.direction == "DOWN":
-            barrel_rect = pygame.Rect(self.rect.centerx - 5, self.rect.y + self.rect.height, 10, self.barrel_length)
-        elif self.direction == "LEFT":
-            barrel_rect = pygame.Rect(self.rect.x - self.barrel_length, self.rect.centery - 5, self.barrel_length, 10)
-        elif self.direction == "RIGHT":
-            barrel_rect = pygame.Rect(self.rect.x + self.rect.width, self.rect.centery - 5, self.barrel_length, 10)
-        pygame.draw.rect(screen, (255, 0, 0), barrel_rect)
+        pygame.draw.rect(screen, (255, 0, 0), self.get_barrel_rect())
 
     def update(self):
         original_x = self.rect.x
