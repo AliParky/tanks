@@ -79,7 +79,7 @@ class Tank:
                 self.direction = "DOWN"
 
         for wall in walls:
-            if self.rect.colliderect(wall):
+            if self.rect.colliderect(wall) or self.get_barrel_rect().colliderect(wall):
                 self.rect.x = original_x
                 self.rect.y = original_y
 
