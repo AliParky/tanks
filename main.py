@@ -82,6 +82,9 @@ class Tank:
             if self.rect.colliderect(wall) or self.get_barrel_rect().colliderect(wall):
                 self.rect.x = original_x
                 self.rect.y = original_y
+    
+    def shoot(self):
+        return Bullet(self.rect.centerx, self.rect.centery, self.direction)
 
 class Bullet:
     def __init__(self, x, y, direction, speed=10, size=5):
