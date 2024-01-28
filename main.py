@@ -42,6 +42,7 @@ class Tank:
         self.speed = 5
         self.barrel_length = size // 2
         self.direction = "UP"
+        self.bullets = []
 
     def get_barrel_rect(self):
         match self.direction:
@@ -84,7 +85,8 @@ class Tank:
                 self.rect.y = original_y
     
     def shoot(self):
-        return Bullet(self.rect.centerx, self.rect.centery, self.direction)
+        bullet = Bullet(self.rect.centerx, self.rect.centery, self.direction)
+        self.bullets.append(bullet)
 
 class Bullet:
     def __init__(self, x, y, direction, speed=10, size=5):
