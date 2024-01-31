@@ -10,16 +10,16 @@ Welcome to Tanks built with Pygame! This simple and fun game allows two players 
 
 # Player 1 Controls
 
-- **W:** Move forward
-- **S:** Move backward
-- **A:** Rotate the tank counterclockwise
-- **D:** Rotate the tankt clockwise
+- **W:** Move up
+- **S:** Move down
+- **A:** Move left
+- **D:** Move right
 - **Spacebar:** Fire a bullet
 
 # Player 2 Controls
 
-- **Up Arrow:** Move forward
-- **Down Arrow:** Move backward
-- **Left Arrow:** Rotate the tank counterclockwise
-- **Right Arrow:** Rotate the tank clockwise
+- **Up Arrow:** Move up
+- **Down Arrow:** Move down
+- **Left Arrow:** Move left
+- **Right Arrow:** Move right
 - **Enter/Return:** Fire a bullet
