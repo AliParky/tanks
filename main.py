@@ -93,6 +93,13 @@ class Bullet:
         self.rect = pygame.Rect(x, y, size, size)
         self.speed = speed
         self.direction = direction
+        
+    def move(self):
+        match self.direction:
+            case "UP": self.rect.y -= self.speed
+            case "DOWN": self.rect.y += self.speed
+            case "LEFT": self.rect.x -= self.speed
+            case "RIGHT": self.rect.x += self.speed
 
 tank = Tank(100, 100, 50)
 
