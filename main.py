@@ -100,6 +100,9 @@ class Bullet:
             case "DOWN": self.rect.y += self.speed
             case "LEFT": self.rect.x -= self.speed
             case "RIGHT": self.rect.x += self.speed
+    
+    def draw(self, screen):
+        pygame.draw.rect(screen, (0, 0, 0), self.rect)
 
 tank = Tank(100, 100, 50)
 
