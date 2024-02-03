@@ -88,6 +88,10 @@ class Tank:
         bullet = Bullet(self.rect.centerx, self.rect.centery, self.direction)
         self.bullets.append(bullet)
 
+    def update_bullets(self):
+        for bullet in self.bullets:
+            bullet.update()
+
 class Bullet:
     def __init__(self, x, y, direction, speed=10, size=5):
         self.rect = pygame.Rect(x, y, size, size)
