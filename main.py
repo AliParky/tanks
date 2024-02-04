@@ -90,7 +90,7 @@ class Tank:
 
     def update_bullets(self):
         for bullet in self.bullets:
-            bullet.update()
+            bullet.move()
 
 class Bullet:
     def __init__(self, x, y, direction, speed=10, size=5):
