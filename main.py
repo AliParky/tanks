@@ -122,10 +122,13 @@ while True:
 
     # Do logical updates here.
     tank.update()
+    tank.update_bullets()
 
     screen.fill("white")
 
     # Render the graphics here.
+    for bullet in tank.bullets:
+        bullet.draw(screen)
     tank.draw(screen)
     draw_walls(screen)
     
