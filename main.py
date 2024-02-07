@@ -94,7 +94,7 @@ class Tank:
 
 class Bullet:
     def __init__(self, x, y, direction, speed=10, size=5):
-        self.rect = pygame.Rect(x, y, size, size)
+        self.rect = pygame.Rect(x - size / 2, y - size / 2, size, size)
         self.speed = speed
         self.direction = direction
         
