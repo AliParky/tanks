@@ -108,6 +108,12 @@ class Bullet:
     def draw(self, screen):
         pygame.draw.rect(screen, (0, 0, 0), self.rect)
 
+    def check_collision(self, walls):
+        for wall in walls:
+            if self.rect.colliderect(wall):
+                return True
+        return False
+
 tank = Tank(100, 100, 50)
 
 while True:
