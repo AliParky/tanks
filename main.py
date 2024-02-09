@@ -91,6 +91,8 @@ class Tank:
     def update_bullets(self):
         for bullet in self.bullets:
             bullet.move()
+            if bullet.check_collision(walls):
+                self.bullets.remove(bullet)
 
 class Bullet:
     def __init__(self, x, y, direction, speed=10, size=5):
