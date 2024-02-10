@@ -6,6 +6,22 @@ screen = pygame.display.set_mode((1280,720))
 
 clock = pygame.time.Clock()
 
+player_one_controls = {
+    'up': pygame.K_UP,
+    'down': pygame.K_DOWN,
+    'left': pygame.K_LEFT,
+    'right': pygame.K_RIGHT,
+    'shoot': pygame.K_SPACE
+}
+
+player_two_controls = {
+    'up': pygame.K_w,
+    'down': pygame.K_s,
+    'left': pygame.K_a,
+    'right': pygame.K_d,
+    'shoot': pygame.K_LCTRL
+}
+
 wall_matrix = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     [1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
