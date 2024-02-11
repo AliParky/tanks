@@ -53,12 +53,13 @@ def draw_walls(screen):
         pygame.draw.rect(screen, color, wall)
 
 class Tank:
-    def __init__(self, x, y, size):
+    def __init__(self, x, y, size, controls):
         self.rect = pygame.Rect(x, y, size, size)
         self.speed = 5
         self.barrel_length = size // 2
         self.direction = "UP"
         self.bullets = []
+        self.controls = controls
 
     def get_barrel_rect(self):
         match self.direction:
