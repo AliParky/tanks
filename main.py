@@ -133,7 +133,7 @@ class Bullet:
                 return True
         return False
 
-tank = Tank(100, 100, 50)
+tank = Tank(100, 100, 50, player_one_controls)
 
 while True:
     # Process player inputs.
