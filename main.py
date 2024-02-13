@@ -81,18 +81,18 @@ class Tank:
         original_y = self.rect.y
 
         keys = pygame.key.get_pressed()
-        movement_keys_pressed = sum([keys[pygame.K_LEFT], keys[pygame.K_RIGHT], keys[pygame.K_UP], keys[pygame.K_DOWN]])
+        movement_keys_pressed = sum([keys[self.controls['left']], keys[self.controls['right']], keys[self.controls['up']], keys[self.controls['down']]])
         if movement_keys_pressed == 1:
-            if keys[pygame.K_LEFT]:
+            if keys[self.controls['left']]:
                 self.rect.x -= self.speed
                 self.direction = "LEFT"
-            if keys[pygame.K_RIGHT]:
+            if keys[self.controls['right']]:
                 self.rect.x += self.speed
                 self.direction = "RIGHT"
-            if keys[pygame.K_UP]:
+            if keys[self.controls['up']]:
                 self.rect.y -= self.speed
                 self.direction = "UP"
-            if keys[pygame.K_DOWN]:
+            if keys[self.controls['down']]:
                 self.rect.y += self.speed
                 self.direction = "DOWN"
 
