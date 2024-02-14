@@ -110,6 +110,11 @@ class Tank:
             bullet.move()
             if bullet.check_collision(walls):
                 self.bullets.remove(bullet)
+    
+    def handle_event(self, event):
+        if event.type == pygame.KEYDOWN:
+            if event.key == self.controls['shoot']:
+                self.shoot()
 
 class Bullet:
     def __init__(self, x, y, direction, speed=10, size=5):
@@ -141,9 +146,7 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             raise SystemExit
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_SPACE:
-                tank.shoot()
+        tank.handle_event(event)
 
     # Do logical updates here.
     tank.update()
