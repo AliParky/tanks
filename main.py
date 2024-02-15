@@ -138,7 +138,8 @@ class Bullet:
                 return True
         return False
 
-tank = Tank(100, 100, 50, player_one_controls)
+tank1 = Tank(100, 100, 50, player_one_controls)
+tank2 = Tank(1135, 575, 50, player_two_controls)  # Add tank2
 
 while True:
     # Process player inputs.
@@ -146,18 +147,24 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             raise SystemExit
-        tank.handle_event(event)
+        tank1.handle_event(event)
+        tank2.handle_event(event)
 
     # Do logical updates here.
-    tank.update()
-    tank.update_bullets()
+    tank1.update()
+    tank2.update()
+    tank1.update_bullets()
+    tank2.update_bullets()
 
     screen.fill("white")
 
     # Render the graphics here.
-    for bullet in tank.bullets:
+    for bullet in tank1.bullets:
         bullet.draw(screen)
-    tank.draw(screen)
+    for bullet in tank2.bullets:
+        bullet.draw(screen)
+    tank1.draw(screen)
+    tank2.draw(screen)
     draw_walls(screen)
     
     pygame.display.flip()  # Refresh on-screen display
