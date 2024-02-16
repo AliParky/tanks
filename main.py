@@ -105,10 +105,12 @@ class Tank:
         bullet = Bullet(self.rect.centerx, self.rect.centery, self.direction)
         self.bullets.append(bullet)
 
-    def update_bullets(self):
+    def update_bullets(self, enemy_tank):
         for bullet in self.bullets:
             bullet.move()
             if bullet.check_collision(walls):
+                self.bullets.remove(bullet)
+            elif bullet.rect.colliderect(enemy_tank.rect):
                 self.bullets.remove(bullet)
     
     def handle_event(self, event):
@@ -153,8 +155,8 @@ while True:
     # Do logical updates here.
     tank1.update()
     tank2.update()
-    tank1.update_bullets()
-    tank2.update_bullets()
+    tank1.update_bullets(tank2)
+    tank2.update_bullets(tank1)
 
     screen.fill("white")
 
