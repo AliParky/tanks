@@ -140,8 +140,8 @@ class Bullet:
                 return True
         return False
 
-tank1 = Tank(100, 100, 50, player_one_controls)
-tank2 = Tank(1135, 575, 50, player_two_controls)  # Add tank2
+tank1 = Tank(1135, 575, 50, player_one_controls)
+tank2 = Tank(100, 100, 50, player_two_controls)
 
 while True:
     # Process player inputs.
