@@ -53,13 +53,14 @@ def draw_walls(screen):
         pygame.draw.rect(screen, color, wall)
 
 class Tank:
-    def __init__(self, x, y, size, controls):
+    def __init__(self, x, y, size, controls, color):
         self.rect = pygame.Rect(x, y, size, size)
         self.speed = 5
         self.barrel_length = size // 2
         self.direction = "UP"
         self.bullets = []
         self.controls = controls
+        self.color = color
 
     def get_barrel_rect(self):
         match self.direction:
@@ -73,8 +74,8 @@ class Tank:
                 return pygame.Rect(self.rect.x + self.rect.width, self.rect.centery - 5, self.barrel_length, 10)
         
     def draw(self, screen):
-        pygame.draw.rect(screen, (255, 0, 0), self.rect)
-        pygame.draw.rect(screen, (255, 0, 0), self.get_barrel_rect())
+        pygame.draw.rect(screen, self.color, self.rect)
+        pygame.draw.rect(screen, self.color, self.get_barrel_rect())
 
     def update(self):
         original_x = self.rect.x
@@ -140,8 +141,8 @@ class Bullet:
                 return True
         return False
 
-tank1 = Tank(1135, 575, 50, player_one_controls)
-tank2 = Tank(100, 100, 50, player_two_controls)
+tank1 = Tank(1135, 575, 50, player_one_controls, (255, 0, 0))
+tank2 = Tank(100, 100, 50, player_two_controls, (0, 0, 255))
 
 while True:
     # Process player inputs.
