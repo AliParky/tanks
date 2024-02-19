@@ -61,6 +61,7 @@ class Tank:
         self.bullets = []
         self.controls = controls
         self.color = color
+        self.is_alive = True
 
     def get_barrel_rect(self):
         match self.direction:
@@ -74,8 +75,9 @@ class Tank:
                 return pygame.Rect(self.rect.x + self.rect.width, self.rect.centery - 5, self.barrel_length, 10)
         
     def draw(self, screen):
-        pygame.draw.rect(screen, self.color, self.rect)
-        pygame.draw.rect(screen, self.color, self.get_barrel_rect())
+        if self.is_alive:
+            pygame.draw.rect(screen, self.color, self.rect)
+            pygame.draw.rect(screen, self.color, self.get_barrel_rect())
 
     def update(self):
         original_x = self.rect.x
@@ -112,6 +114,7 @@ class Tank:
             if bullet.check_collision(walls):
                 self.bullets.remove(bullet)
             elif bullet.rect.colliderect(enemy_tank.rect):
+                enemy_tank.is_alive = False
                 self.bullets.remove(bullet)
     
     def handle_event(self, event):
